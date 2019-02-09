@@ -6,6 +6,8 @@ module Test.Runner.Html exposing
 
 {-| This library aims to run and display tests as HTML on a web page, for example in order to create code kata.
 
+One limitation to that is that you need to add your test dependencies as project dependencies.
+
 
 # Definition
 
@@ -157,9 +159,7 @@ viewExpectationResult expectation =
         |> Maybe.map
             (\reason ->
                 div []
-                    [ p []
-                        [ text reason.description
-                        ]
+                    [ pre [] [ text reason.description ]
                     , viewReason reason.reason
                     ]
             )
