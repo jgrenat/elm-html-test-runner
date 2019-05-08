@@ -143,7 +143,7 @@ viewTestsResults passedTestsDisplay runner =
                 else
                     let
                         isFailure result =
-                            result == text "Passed!"
+                            result /= text "Passed!"
                     in
                     List.map
                         (\result ->
