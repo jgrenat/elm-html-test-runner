@@ -3,7 +3,7 @@
     "name": "jgrenat/elm-html-test-runner",
     "summary": "Run and display Elm tests as HTML",
     "license": "BSD-3-Clause",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "exposed-modules": [
         "Test.Runner.Html"
     ],
