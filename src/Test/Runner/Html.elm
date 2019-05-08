@@ -28,7 +28,7 @@ One limitation to that is that you need to add your test dependencies as project
 import Array exposing (Array)
 import Expect exposing (Expectation)
 import Html exposing (Html, div, h3, li, p, pre, text, ul)
-import Html.Attributes exposing (style)
+import Html.Attributes exposing (class, style)
 import Maybe.Extra
 import Random exposing (Seed, initialSeed)
 import Test exposing (Test)
@@ -135,15 +135,27 @@ viewTestsResults passedTestsDisplay runner =
         |> getExpectationResults
         |> (\expectationsResults ->
                 if List.length expectationsResults == 0 then
-                    div []
+                    div [ class "test-pass" ]
                         [ h3 [] [ text label ]
                         , text "✔️ All tests passed"
                         ]
 
                 else
+                    let
+                        isFailure result =
+                            result == text "Passed!"
+                    in
                     List.map
                         (\result ->
-                            div []
+                            div
+                                [ class
+                                    (if isFailure result then
+                                        "test-fail"
+
+                                     else
+                                        "test-pass"
+                                    )
+                                ]
                                 [ h3 [] [ text label ]
                                 , result
                                 ]
